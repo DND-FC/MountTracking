@@ -90,9 +90,6 @@
       }
 
       .series summary {
-        position: sticky;
-        top: 0;
-        z-index: 3;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -140,10 +137,7 @@
       }
 
       thead th {
-        position: sticky;
-        top: 64px;
         background: rgba(14, 22, 34, 0.98);
-        z-index: 1;
       }
 
       th[scope="row"],
@@ -264,7 +258,7 @@
     <main>
       <section class="hero">
         <h1>FFXIV Mount Ownership Matrix</h1>
-        <p class="meta">Generated at 2026-05-17T14:15:43.893Z</p>
+        <p class="meta">Generated at 2026-05-17T14:21:17.298Z</p>
         <div class="legend">
           <span class="owned">Owned</span>
           <span class="missing">Missing</span>
@@ -272,7 +266,7 @@
         </div>
       </section>
       
-      <details class="series" open>
+      <details class="series" id="nightmare-mounts" data-series="nightmare-mounts" open>
         <summary>
           <span>Nightmare Mounts</span>
           <span class="series-count">8 mounts</span>
@@ -298,7 +292,7 @@
           </table>
         </div>
       </details>
-<details class="series" >
+<details class="series" id="lanner-mounts" data-series="lanner-mounts" >
         <summary>
           <span>Lanner Mounts</span>
           <span class="series-count">8 mounts</span>
@@ -324,7 +318,7 @@
           </table>
         </div>
       </details>
-<details class="series" >
+<details class="series" id="kamuy-mounts" data-series="kamuy-mounts" >
         <summary>
           <span>Kamuy Mounts</span>
           <span class="series-count">9 mounts</span>
@@ -351,7 +345,7 @@
           </table>
         </div>
       </details>
-<details class="series" >
+<details class="series" id="gwiber-mounts" data-series="gwiber-mounts" >
         <summary>
           <span>Gwiber Mounts</span>
           <span class="series-count">8 mounts</span>
@@ -377,7 +371,7 @@
           </table>
         </div>
       </details>
-<details class="series" >
+<details class="series" id="lynx-mounts" data-series="lynx-mounts" >
         <summary>
           <span>Lynx Mounts</span>
           <span class="series-count">8 mounts</span>
@@ -403,7 +397,7 @@
           </table>
         </div>
       </details>
-<details class="series" >
+<details class="series" id="wing-mounts" data-series="wing-mounts" >
         <summary>
           <span>Wing Mounts</span>
           <span class="series-count">9 mounts</span>
@@ -433,6 +427,58 @@
     </main>
     <script>
       (() => {
+        const seriesElements = Array.from(document.querySelectorAll(".series[data-series]"));
+        const parseHash = () => {
+          const raw = window.location.hash.replace(/^#/, "").trim();
+          if (!raw) {
+            return null;
+          }
+
+          return new Set(
+            raw.split(",")
+              .map((part) => part.trim())
+              .filter(Boolean)
+          );
+        };
+
+        const applyHashState = () => {
+          const active = parseHash();
+          if (!active) {
+            return;
+          }
+
+          seriesElements.forEach((element) => {
+            element.open = active.has(element.dataset.series);
+          });
+        };
+
+        const syncHashState = () => {
+          const openSeries = seriesElements
+            .filter((element) => element.open)
+            .map((element) => element.dataset.series);
+
+          const newHash = openSeries.join(",");
+          const currentHash = window.location.hash.replace(/^#/, "");
+          if (newHash === currentHash) {
+            return;
+          }
+
+          const target = newHash ? "#" + newHash : window.location.pathname + window.location.search;
+          history.replaceState(null, "", target);
+        };
+
+        applyHashState();
+
+        seriesElements.forEach((element) => {
+          element.addEventListener("toggle", () => {
+            syncHashState();
+          });
+        });
+
+        window.addEventListener("hashchange", () => {
+          applyHashState();
+        });
+
         const clearTableHover = (table) => {
           table.querySelectorAll(".is-hover-col").forEach((cell) => cell.classList.remove("is-hover-col"));
           table.querySelectorAll("tr.is-hover-row").forEach((row) => row.classList.remove("is-hover-row"));
