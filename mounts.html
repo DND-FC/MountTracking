@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FFXIV Mount Ownership Matrix</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5efe3;
+        --panel: rgba(255, 251, 245, 0.92);
+        --text: #1e1a17;
+        --muted: #6d6258;
+        --border: #d5c4ad;
+        --owned: #2f6d4f;
+        --missing: #8a2d2d;
+        --unknown: #7c5c1c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(222, 196, 151, 0.35), transparent 35%),
+          linear-gradient(180deg, #efe3ce 0%, var(--bg) 40%, #f8f3eb 100%);
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 20px 56px;
+      }
+
+      .hero,
+      .warnings,
+      .table-wrap {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(73, 47, 24, 0.08);
+      }
+
+      .hero {
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 8px;
+      }
+
+      .meta {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .warnings {
+        margin-bottom: 20px;
+        padding: 20px 24px;
+      }
+
+      .warnings ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        padding: 14px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--border);
+        padding: 12px 14px;
+        text-align: center;
+      }
+
+      thead th {
+        position: sticky;
+        top: 0;
+        background: #fbf6ef;
+        z-index: 1;
+      }
+
+      th[scope="row"],
+      thead th:first-child {
+        text-align: left;
+      }
+
+      .symbol {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .is-owned {
+        color: var(--owned);
+      }
+
+      .not-owned {
+        color: var(--missing);
+      }
+
+      .is-unknown {
+        color: var(--unknown);
+      }
+
+      .legend {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        color: var(--muted);
+      }
+
+      .legend span::before {
+        display: inline-block;
+        width: 1.25em;
+        margin-right: 6px;
+        text-align: center;
+      }
+
+      .legend .owned::before {
+        content: "\2713";
+        color: var(--owned);
+      }
+
+      .legend .missing::before {
+        content: "\2717";
+        color: var(--missing);
+      }
+
+      .legend .unknown::before {
+        content: "?";
+        color: var(--unknown);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          padding: 18px 12px 36px;
+        }
+
+        .hero,
+        .warnings,
+        .table-wrap {
+          border-radius: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>FFXIV Mount Ownership Matrix</h1>
+        <p class="meta">Generated at 2026-05-17T13:59:49.785Z</p>
+        <div class="legend">
+          <span class="owned">Owned</span>
+          <span class="missing">Missing</span>
+          <span class="unknown">Unknown</span>
+        </div>
+      </section>
+      <section class="warnings"><h2>Warnings</h2><ul><li><strong>Character 59778689</strong>: connect ECONNREFUSED 127.0.0.1:9</li><li><strong>Character 18431459</strong>: connect ECONNREFUSED 127.0.0.1:9</li></ul></section>
+      <section class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Mount</th>
+              <th scope="col">Character 59778689</th><th scope="col">Character 18431459</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Xanthos</th><td class="is-unknown" aria-label="Xanthos: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Xanthos: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Gullfaxi</th><td class="is-unknown" aria-label="Gullfaxi: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Gullfaxi: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Aithon</th><td class="is-unknown" aria-label="Aithon: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Aithon: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Enbarr</th><td class="is-unknown" aria-label="Enbarr: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Enbarr: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Markab</th><td class="is-unknown" aria-label="Markab: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Markab: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Boreas</th><td class="is-unknown" aria-label="Boreas: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Boreas: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Kirin</th><td class="is-unknown" aria-label="Kirin: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Kirin: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Demonic Lanner</th><td class="is-unknown" aria-label="Demonic Lanner: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Demonic Lanner: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Sophic Lanner</th><td class="is-unknown" aria-label="Sophic Lanner: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Sophic Lanner: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Reveling Kamuy</th><td class="is-unknown" aria-label="Reveling Kamuy: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Reveling Kamuy: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Legendary Kamuy</th><td class="is-unknown" aria-label="Legendary Kamuy: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Legendary Kamuy: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+<tr><th scope="row">Shadow Gwiber</th><td class="is-unknown" aria-label="Shadow Gwiber: Character 59778689 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td><td class="is-unknown" aria-label="Shadow Gwiber: Character 18431459 Unknown"><span class="symbol" aria-hidden="true">?</span><span class="sr-only">Unknown</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
