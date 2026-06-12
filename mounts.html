@@ -230,20 +230,26 @@
         gap: 10px;
       }
 
-      .visibility-toggle {
+      .visibility-option {
         border: 1px solid rgba(157, 194, 255, 0.28);
         border-radius: 999px;
         background: rgba(8, 16, 24, 0.65);
         color: var(--text);
         padding: 8px 12px;
-        font: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         cursor: pointer;
       }
 
-      .visibility-toggle.is-hidden {
+      .visibility-option.is-hidden {
         color: var(--muted);
         border-color: rgba(128, 163, 214, 0.18);
         background: rgba(255, 255, 255, 0.04);
+      }
+
+      .visibility-toggle {
+        margin: 0;
       }
 
       .legend span::before {
@@ -300,16 +306,16 @@
     <main>
       <section class="hero">
         <h1>FFXIV Mount Ownership Matrix</h1>
-        <p class="meta">Generated at 2026-06-12T19:13:39.334Z</p>
+        <p class="meta">Generated at 2026-06-12T19:18:49.007Z</p>
         <div class="legend">
           <span class="owned">Owned</span>
           <span class="missing">Missing</span>
           <span class="unknown">Unknown</span>
         </div>
         <section class="controls" aria-label="Visible characters">
-          <p class="controls-label">Hide columns</p>
+          <p class="controls-label">Visible players</p>
           <div class="visibility-controls">
-            <button type="button" class="visibility-toggle" data-character-toggle="0" data-character-name="Tosha" aria-pressed="false">Hide Tosha</button><button type="button" class="visibility-toggle" data-character-toggle="1" data-character-name="Mei" aria-pressed="false">Hide Mei</button><button type="button" class="visibility-toggle" data-character-toggle="2" data-character-name="Kamila" aria-pressed="false">Hide Kamila</button><button type="button" class="visibility-toggle" data-character-toggle="3" data-character-name="Babs" aria-pressed="false">Hide Babs</button><button type="button" class="visibility-toggle" data-character-toggle="4" data-character-name="Reinn" aria-pressed="false">Hide Reinn</button><button type="button" class="visibility-toggle" data-character-toggle="5" data-character-name="Fractal" aria-pressed="false">Hide Fractal</button><button type="button" class="visibility-toggle" data-character-toggle="6" data-character-name="Poti" aria-pressed="false">Hide Poti</button><button type="button" class="visibility-toggle" data-character-toggle="7" data-character-name="Gospi" aria-pressed="false">Hide Gospi</button><button type="button" class="visibility-toggle" data-character-toggle="8" data-character-name="K&#39;jiroh" aria-pressed="false">Hide K&#39;jiroh</button><button type="button" class="visibility-toggle" data-character-toggle="9" data-character-name="Haru" aria-pressed="false">Hide Haru</button><button type="button" class="visibility-toggle" data-character-toggle="10" data-character-name="Seika" aria-pressed="false">Hide Seika</button>
+            <label class="visibility-option" data-character-option="0"><input type="checkbox" class="visibility-toggle" data-character-toggle="0" data-character-name="Tosha" checked> <span>Tosha</span></label><label class="visibility-option" data-character-option="1"><input type="checkbox" class="visibility-toggle" data-character-toggle="1" data-character-name="Mei" checked> <span>Mei</span></label><label class="visibility-option" data-character-option="2"><input type="checkbox" class="visibility-toggle" data-character-toggle="2" data-character-name="Kamila" checked> <span>Kamila</span></label><label class="visibility-option" data-character-option="3"><input type="checkbox" class="visibility-toggle" data-character-toggle="3" data-character-name="Babs" checked> <span>Babs</span></label><label class="visibility-option" data-character-option="4"><input type="checkbox" class="visibility-toggle" data-character-toggle="4" data-character-name="Reinn" checked> <span>Reinn</span></label><label class="visibility-option" data-character-option="5"><input type="checkbox" class="visibility-toggle" data-character-toggle="5" data-character-name="Fractal" checked> <span>Fractal</span></label><label class="visibility-option" data-character-option="6"><input type="checkbox" class="visibility-toggle" data-character-toggle="6" data-character-name="Poti" checked> <span>Poti</span></label><label class="visibility-option" data-character-option="7"><input type="checkbox" class="visibility-toggle" data-character-toggle="7" data-character-name="Gospi" checked> <span>Gospi</span></label><label class="visibility-option" data-character-option="8"><input type="checkbox" class="visibility-toggle" data-character-toggle="8" data-character-name="K&#39;jiroh" checked> <span>K&#39;jiroh</span></label><label class="visibility-option" data-character-option="9"><input type="checkbox" class="visibility-toggle" data-character-toggle="9" data-character-name="Haru" checked> <span>Haru</span></label><label class="visibility-option" data-character-option="10"><input type="checkbox" class="visibility-toggle" data-character-toggle="10" data-character-name="Seika" checked> <span>Seika</span></label>
           </div>
         </section>
       </section>
@@ -513,10 +519,13 @@
           document.querySelectorAll(".ownership-table tbody td[data-row][data-character][data-default-state]")
         );
         const characterColumns = new Map(
-          matrix.characters.map((_, index) => [
-            String(index),
-            Array.from(document.querySelectorAll('[data-character="' + index + '"]'))
-          ])
+          visibilityToggles.map((toggle) => {
+            const characterIndex = toggle.dataset.characterToggle;
+            return [
+              characterIndex,
+              Array.from(document.querySelectorAll('[data-character="' + characterIndex + '"]'))
+            ];
+          })
         );
         const stateConfig = {
           owned: {
@@ -603,13 +612,12 @@
         };
 
         const applyHiddenCharacters = (hiddenCharacters) => {
-        visibilityToggles.forEach((toggle) => {
-          const characterIndex = toggle.dataset.characterToggle;
-          const hidden = hiddenCharacters.has(characterIndex);
-          toggle.classList.toggle("is-hidden", hidden);
-          toggle.setAttribute("aria-pressed", hidden ? "true" : "false");
-          toggle.textContent = (hidden ? "Show " : "Hide ") + toggle.dataset.characterName;
-        });
+          visibilityToggles.forEach((toggle) => {
+            const characterIndex = toggle.dataset.characterToggle;
+            const hidden = hiddenCharacters.has(characterIndex);
+            toggle.checked = !hidden;
+            toggle.closest(".visibility-option")?.classList.toggle("is-hidden", hidden);
+          });
 
           characterColumns.forEach((cells, characterIndex) => {
             const hidden = hiddenCharacters.has(characterIndex);
@@ -672,7 +680,7 @@
             .filter((element) => element.open)
             .map((element) => element.dataset.series);
           const hiddenCharacters = visibilityToggles
-            .filter((toggle) => toggle.classList.contains("is-hidden"))
+            .filter((toggle) => !toggle.checked)
             .map((toggle) => toggle.dataset.characterToggle);
           const cellOverrides = interactiveCells
             .filter((cell) => cell.dataset.state !== cell.dataset.defaultState)
@@ -704,15 +712,8 @@
         applyHashState();
 
         visibilityToggles.forEach((toggle) => {
-          toggle.addEventListener("click", () => {
-            toggle.classList.toggle("is-hidden");
-            applyHiddenCharacters(
-              new Set(
-                visibilityToggles
-                  .filter((item) => item.classList.contains("is-hidden"))
-                  .map((item) => item.dataset.characterToggle)
-              )
-            );
+          toggle.addEventListener("change", () => {
+            applyHiddenCharacters(new Set(visibilityToggles.filter((item) => !item.checked).map((item) => item.dataset.characterToggle)));
             syncHashState();
           });
         });
