@@ -214,6 +214,38 @@
         color: var(--muted);
       }
 
+      .controls {
+        margin-top: 18px;
+      }
+
+      .controls-label {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .visibility-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .visibility-toggle {
+        border: 1px solid rgba(157, 194, 255, 0.28);
+        border-radius: 999px;
+        background: rgba(8, 16, 24, 0.65);
+        color: var(--text);
+        padding: 8px 12px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .visibility-toggle.is-hidden {
+        color: var(--muted);
+        border-color: rgba(128, 163, 214, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
       .legend span::before {
         display: inline-block;
         width: 1.25em;
@@ -268,12 +300,18 @@
     <main>
       <section class="hero">
         <h1>FFXIV Mount Ownership Matrix</h1>
-        <p class="meta">Generated at 2026-06-12T19:05:47.479Z</p>
+        <p class="meta">Generated at 2026-06-12T19:13:39.334Z</p>
         <div class="legend">
           <span class="owned">Owned</span>
           <span class="missing">Missing</span>
           <span class="unknown">Unknown</span>
         </div>
+        <section class="controls" aria-label="Visible characters">
+          <p class="controls-label">Hide columns</p>
+          <div class="visibility-controls">
+            <button type="button" class="visibility-toggle" data-character-toggle="0" data-character-name="Tosha" aria-pressed="false">Hide Tosha</button><button type="button" class="visibility-toggle" data-character-toggle="1" data-character-name="Mei" aria-pressed="false">Hide Mei</button><button type="button" class="visibility-toggle" data-character-toggle="2" data-character-name="Kamila" aria-pressed="false">Hide Kamila</button><button type="button" class="visibility-toggle" data-character-toggle="3" data-character-name="Babs" aria-pressed="false">Hide Babs</button><button type="button" class="visibility-toggle" data-character-toggle="4" data-character-name="Reinn" aria-pressed="false">Hide Reinn</button><button type="button" class="visibility-toggle" data-character-toggle="5" data-character-name="Fractal" aria-pressed="false">Hide Fractal</button><button type="button" class="visibility-toggle" data-character-toggle="6" data-character-name="Poti" aria-pressed="false">Hide Poti</button><button type="button" class="visibility-toggle" data-character-toggle="7" data-character-name="Gospi" aria-pressed="false">Hide Gospi</button><button type="button" class="visibility-toggle" data-character-toggle="8" data-character-name="K&#39;jiroh" aria-pressed="false">Hide K&#39;jiroh</button><button type="button" class="visibility-toggle" data-character-toggle="9" data-character-name="Haru" aria-pressed="false">Hide Haru</button><button type="button" class="visibility-toggle" data-character-toggle="10" data-character-name="Seika" aria-pressed="false">Hide Seika</button>
+          </div>
+        </section>
       </section>
       
       <details class="series" id="nightmare-mounts-arr" data-series="nightmare-mounts-arr" open>
@@ -286,7 +324,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -312,7 +350,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -338,7 +376,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -365,7 +403,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -391,7 +429,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -417,7 +455,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -444,7 +482,7 @@
             <thead>
               <tr>
                 <th scope="col" data-col="1">Mount</th>
-                <th scope="col" data-col="2">Tosha</th><th scope="col" data-col="3">Mei</th><th scope="col" data-col="4">Kamila</th><th scope="col" data-col="5">Babs</th><th scope="col" data-col="6">Reinn</th><th scope="col" data-col="7">Fractal</th><th scope="col" data-col="8">Poti</th><th scope="col" data-col="9">Gospi</th><th scope="col" data-col="10">K&#39;jiroh</th><th scope="col" data-col="11">Haru</th><th scope="col" data-col="12">Seika</th>
+                <th scope="col" data-col="2" data-character="0">Tosha</th><th scope="col" data-col="3" data-character="1">Mei</th><th scope="col" data-col="4" data-character="2">Kamila</th><th scope="col" data-col="5" data-character="3">Babs</th><th scope="col" data-col="6" data-character="4">Reinn</th><th scope="col" data-col="7" data-character="5">Fractal</th><th scope="col" data-col="8" data-character="6">Poti</th><th scope="col" data-col="9" data-character="7">Gospi</th><th scope="col" data-col="10" data-character="8">K&#39;jiroh</th><th scope="col" data-col="11" data-character="9">Haru</th><th scope="col" data-col="12" data-character="10">Seika</th>
               </tr>
             </thead>
             <tbody>
@@ -470,8 +508,15 @@
     <script>
       (() => {
         const seriesElements = Array.from(document.querySelectorAll(".series[data-series]"));
+        const visibilityToggles = Array.from(document.querySelectorAll("[data-character-toggle]"));
         const interactiveCells = Array.from(
           document.querySelectorAll(".ownership-table tbody td[data-row][data-character][data-default-state]")
+        );
+        const characterColumns = new Map(
+          matrix.characters.map((_, index) => [
+            String(index),
+            Array.from(document.querySelectorAll('[data-character="' + index + '"]'))
+          ])
         );
         const stateConfig = {
           owned: {
@@ -497,6 +542,7 @@
           if (!raw) {
             return {
               openSeries: null,
+              hiddenCharacters: new Set(),
               cellOverrides: new Map()
             };
           }
@@ -508,6 +554,7 @@
                   .map((part) => part.trim())
                   .filter(Boolean)
               ),
+              hiddenCharacters: new Set(),
               cellOverrides: new Map()
             };
           }
@@ -515,6 +562,7 @@
           const params = new URLSearchParams(raw);
           const hasOpenSeriesParam = params.has("open");
           const openSeriesParam = params.get("open") ?? "";
+          const hideParam = params.get("hide");
           const cellsParam = params.get("cells");
           const openSeries = hasOpenSeriesParam
             ? new Set(
@@ -524,6 +572,12 @@
                   .filter(Boolean)
               )
             : null;
+          const hiddenCharacters = new Set(
+            (hideParam ?? "")
+              .split(",")
+              .map((part) => part.trim())
+              .filter(Boolean)
+          );
           const cellOverrides = new Map();
 
           if (cellsParam) {
@@ -543,8 +597,26 @@
 
           return {
             openSeries,
+            hiddenCharacters,
             cellOverrides
           };
+        };
+
+        const applyHiddenCharacters = (hiddenCharacters) => {
+        visibilityToggles.forEach((toggle) => {
+          const characterIndex = toggle.dataset.characterToggle;
+          const hidden = hiddenCharacters.has(characterIndex);
+          toggle.classList.toggle("is-hidden", hidden);
+          toggle.setAttribute("aria-pressed", hidden ? "true" : "false");
+          toggle.textContent = (hidden ? "Show " : "Hide ") + toggle.dataset.characterName;
+        });
+
+          characterColumns.forEach((cells, characterIndex) => {
+            const hidden = hiddenCharacters.has(characterIndex);
+            cells.forEach((cell) => {
+              cell.hidden = hidden;
+            });
+          });
         };
 
         const applyCellState = (cell, state) => {
@@ -573,13 +645,15 @@
         };
 
         const applyHashState = () => {
-          const { openSeries, cellOverrides } = parseHash();
+          const { openSeries, hiddenCharacters, cellOverrides } = parseHash();
 
           if (openSeries) {
             seriesElements.forEach((element) => {
               element.open = openSeries.has(element.dataset.series);
             });
           }
+
+          applyHiddenCharacters(hiddenCharacters);
 
           interactiveCells.forEach((cell) => {
             applyCellState(cell, cell.dataset.defaultState);
@@ -597,13 +671,20 @@
           const openSeries = seriesElements
             .filter((element) => element.open)
             .map((element) => element.dataset.series);
+          const hiddenCharacters = visibilityToggles
+            .filter((toggle) => toggle.classList.contains("is-hidden"))
+            .map((toggle) => toggle.dataset.characterToggle);
           const cellOverrides = interactiveCells
             .filter((cell) => cell.dataset.state !== cell.dataset.defaultState)
             .map((cell) => cellOverrideKey(cell) + ":" + cell.dataset.state);
           const segments = [];
 
-          if (openSeries.length > 0 || cellOverrides.length > 0) {
+          if (openSeries.length > 0 || hiddenCharacters.length > 0 || cellOverrides.length > 0) {
             segments.push("open=" + openSeries.join(","));
+          }
+
+          if (hiddenCharacters.length > 0) {
+            segments.push("hide=" + hiddenCharacters.join(","));
           }
 
           if (cellOverrides.length > 0) {
@@ -621,6 +702,20 @@
         };
 
         applyHashState();
+
+        visibilityToggles.forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            toggle.classList.toggle("is-hidden");
+            applyHiddenCharacters(
+              new Set(
+                visibilityToggles
+                  .filter((item) => item.classList.contains("is-hidden"))
+                  .map((item) => item.dataset.characterToggle)
+              )
+            );
+            syncHashState();
+          });
+        });
 
         seriesElements.forEach((element) => {
           element.addEventListener("toggle", () => {
